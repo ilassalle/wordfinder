@@ -140,6 +140,53 @@ input {
     padding: 12px 16px;
 }
 
+.word-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.word-tabs button {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #9fb3c8;
+    border-radius: 8px;
+    color: #243447;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    min-height: 40px;
+    padding: 8px 12px;
+}
+
+.word-tabs button.active {
+    background: #243447;
+    border-color: #243447;
+    color: #ffffff;
+}
+
+.tab-count {
+    align-items: center;
+    background: #e5edf5;
+    border-radius: 999px;
+    color: #243447;
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 700;
+    justify-content: center;
+    min-width: 1.75rem;
+    padding: 2px 6px;
+}
+
+.word-tabs button.active .tab-count {
+    background: #ffffff;
+}
+
+.empty-tab-message {
+    margin: 16px 0 0;
+}
+
 .word-list {
     list-style-type: none;
     padding: 0;
