@@ -1,6 +1,9 @@
 module.exports = {
   reactStrictMode: true,
-  images: {
-    domains: ['example.com'], // Add your image domains here
+  turbopack: {
+    root: __dirname,
+  },
+  outputFileTracingIncludes: {
+    '/api/words': ['./data/collins-scrabble-words-2019.txt'],
   },
 };

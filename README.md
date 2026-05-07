@@ -1,58 +1,58 @@
 # Word Finder App
 
 ## Overview
-The Word Finder App is a web application that allows users to input a 5x5 or 4x4 board and retrieve a list of available words based on the letters present on the board. The application is built using Next.js and React, providing a seamless user experience.
+The Word Finder App lets users enter a 4x4 or 5x5 letter board and returns words that can be formed by connecting neighboring letters without reusing the same tile in a word.
 
 ## Features
-- Input a 5x5 or 4x4 letter board.
-- Retrieve a list of words that can be formed from the letters on the board.
-- User-friendly interface with a responsive design.
+- Switch between 4x4 and 5x5 boards.
+- Validate board input on both the client and API.
+- Find words from Collins Scrabble Words 2019 with a trie-backed board search.
+- Display loading, empty, and error states.
 
 ## Project Structure
 ```
 word-finder-app
-├── components
-│   ├── BoardInput.tsx      # Component for user input of the letter board
-│   ├── WordList.tsx        # Component for displaying the list of found words
-│   └── Layout.tsx          # Component for consistent layout across the app
-├── pages
-│   ├── index.tsx           # Main entry point of the application
-│   └── api
-│       └── words.ts        # API route for processing board input and returning words
-├── public                   # Directory for static assets (images, icons, etc.)
-├── styles
-│   └── globals.css         # Global CSS styles for the application
-├── package.json             # npm configuration file
-├── next.config.js          # Configuration settings for Next.js
-└── README.md               # Documentation for the project
+|-- components
+|   |-- BoardInput.tsx
+|   |-- Layout.tsx
+|   `-- WordList.tsx
+|-- data
+|   `-- collins-scrabble-words-2019.txt
+|-- lib
+|   `-- wordSolver.ts
+|-- pages
+|   |-- _app.tsx
+|   |-- index.tsx
+|   `-- api
+|       `-- words.ts
+|-- public
+|-- styles
+|   `-- globals.css
+|-- next.config.js
+|-- package.json
+|-- package-lock.json
+|-- tsconfig.json
+`-- README.md
 ```
 
 ## Installation
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd word-finder-app
-   ```
-3. Install the dependencies:
-   ```
-   npm install
-   ```
+```bash
+npm install
+```
 
-## Usage
-1. Start the development server:
-   ```
-   npm run dev
-   ```
-2. Open your browser and go to `http://localhost:3000` to access the application.
+## Development
+```bash
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## Quality Checks
+```bash
+npm run typecheck
+npm run build
+npm run audit
+```
 
 ## Deployment
-This application can be deployed on Vercel. Simply connect your GitHub repository to Vercel and follow the deployment instructions provided by Vercel.
-
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-This project is licensed under the MIT License.
+This app is ready for a standard Next.js host such as Vercel. Commit `package-lock.json` so deployments install the same dependency versions that were verified locally.

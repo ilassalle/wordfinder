@@ -2,22 +2,25 @@ import React from 'react';
 
 interface WordListProps {
   words: string[];
+  hasSearched: boolean;
 }
 
-const WordList: React.FC<WordListProps> = ({ words }) => {
+const WordList: React.FC<WordListProps> = ({ words, hasSearched }) => {
   return (
-    <div>
+    <section className="results-panel" aria-live="polite">
       <h2>Available Words</h2>
-      {words.length > 0 ? (
-        <ul>
+      {!hasSearched ? (
+        <p>Fill the board to start finding words.</p>
+      ) : words.length > 0 ? (
+        <ul className="word-list">
           {words.map((word, index) => (
-            <li key={index}>{word}</li>
+            <li key={word}>{word}</li>
           ))}
         </ul>
       ) : (
         <p>No words found. Please try a different board.</p>
       )}
-    </div>
+    </section>
   );
 };
 

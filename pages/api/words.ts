@@ -1,29 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { findWords, validateBoard } from '../../lib/wordSolver';
 
-const wordsList = ['example', 'words', 'for', 'testing']; // Replace with actual word list or algorithm
+type WordsResponse = {
+    words: string[];
+};
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-        const { board } = req.body;
+type ErrorResponse = {
+    error: string;
+};
 
-        if (!board || (board.length !== 4 && board.length !== 5)) {
-            return res.status(400).json({ error: 'Invalid board size. Please provide a 4x4 or 5x5 board.' });
-        }
-
-        // Implement word-finding logic here
-        const foundWords = findWords(board); // Placeholder for actual word-finding function
-
-        return res.status(200).json({ words: foundWords });
-    } else {
+export default function handler(req: NextApiRequest, res: NextApiResponse<WordsResponse | ErrorResponse>) {
+    if (req.method !== 'POST') {
         res.setHeader('Allow', ['POST']);
-        return res.status(405).end(`Method ${req.method} Not Allowed`);
+        return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
     }
-}
 
-function findWords(board: string[][]): string[] {
-    // Placeholder for the actual word-finding algorithm
-    return wordsList.filter(word => {
-        // Implement logic to check if the word can be formed from the board
-        return true; // Replace with actual condition
-    });
+    const result = validateBoard(req.body?.board);
+
+    if ('error' in result) {
+        return res.status(400).json({ error: result.error });
+    }
+
+    return res.status(200).json({ words: findWords(result.board) });
 }

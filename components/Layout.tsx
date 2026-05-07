@@ -2,12 +2,12 @@ import React from 'react';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
-        <div>
-            <header>
+        <div className="page">
+            <header className="header">
                 <h1>Word Finder App</h1>
             </header>
-            <main>{children}</main>
-            <footer>
+            <main className="main">{children}</main>
+            <footer className="footer">
                 <p>&copy; {new Date().getFullYear()} Word Finder App</p>
             </footer>
         </div>
