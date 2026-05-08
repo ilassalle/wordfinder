@@ -1,7 +1,7 @@
-# Word Finder App
+# Word Hunt Word Finder
 
 ## Overview
-The Word Finder App lets users enter a 4x4 or 5x5 letter board and returns words that can be formed by connecting neighboring letters without reusing the same tile in a word.
+This site lets users enter a 4x4 or 5x5 letter board and returns words that can be formed by connecting neighboring letters without reusing the same tile in a word. I first did this project 2 years ago in data c88c, then wanted to update it. 
 
 ## Features
 - Switch between 4x4 and 5x5 boards.
