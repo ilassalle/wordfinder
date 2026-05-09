@@ -4,7 +4,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <div className="page">
             <header className="header">
-                <h1>Word Finder App</h1>
+                <h1>Word Finder</h1>
             </header>
             <main className="main">{children}</main>
             <footer className="footer">

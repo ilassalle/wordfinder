@@ -1,10 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { CSSProperties, useMemo, useState } from 'react';
 
 type BoardSize = 4 | 5;
 
 type BoardInputProps = {
     isLoading: boolean;
     onSubmit: (board: string[][]) => void;
+};
+
+type BoardGridStyle = CSSProperties & {
+    '--board-size': number;
 };
 
 function createBoard(size: BoardSize): string[][] {
@@ -15,6 +19,7 @@ const BoardInput: React.FC<BoardInputProps> = ({ isLoading, onSubmit }) => {
     const [boardSize, setBoardSize] = useState<BoardSize>(5);
     const [board, setBoard] = useState<string[][]>(() => createBoard(5));
     const isComplete = useMemo(() => board.every((row) => row.every(Boolean)), [board]);
+    const boardGridStyle: BoardGridStyle = { '--board-size': boardSize };
 
     const handleSizeChange = (size: BoardSize) => {
         setBoardSize(size);
@@ -60,7 +65,7 @@ const BoardInput: React.FC<BoardInputProps> = ({ isLoading, onSubmit }) => {
                     </button>
                 </div>
             </div>
-            <div className="board-grid" style={{ gridTemplateColumns: `repeat(${boardSize}, 3rem)` }}>
+            <div className="board-grid" style={boardGridStyle}>
                 {board.map((row, rowIndex) =>
                     row.map((cell, colIndex) => (
                         <input
